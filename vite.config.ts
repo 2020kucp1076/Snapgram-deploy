@@ -6,7 +6,7 @@ import path from "path"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base:"/Snapgram-deploy/",
+  // base:"/Snapgram-deploy/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
