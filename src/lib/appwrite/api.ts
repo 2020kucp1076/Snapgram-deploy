@@ -1,6 +1,7 @@
 import {INewPost, INewUser, IUpdatePost, IUpdateUser} from "@/types";
 import {ID, ImageGravity, Query} from 'appwrite';
 import { account, appwriteConfig, avatars, databases, storage } from "./config";
+import { redirect } from "react-router-dom";
 
 export async function createUserAccount(user: INewUser){
     try{
@@ -85,6 +86,7 @@ export async function getCurrentUser(){
 export async function signOutAccount(){
     try{
         const session = await account.deleteSession('current');
+        redirect('/signin');
         return session;
     } catch(error){
         console.error(error);
