@@ -456,3 +456,14 @@ export async function updateUser(user: IUpdateUser) {
       console.log(error);
     }
   }
+
+  export async function getTopCreators() {
+    const users = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.orderDesc("$createdAt"), Query.limit(20)]
+    );
+  
+    if (!users) throw Error;
+    return users;
+  }
